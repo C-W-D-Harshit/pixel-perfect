@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     }
 
     const optimizedBuffer = await sharp(buffer)
-      .webp({ quality: 65 })
+      .webp({ quality: 50 })
       .toBuffer();
 
     const optimizedBase64 = `data:image/webp;base64,${optimizedBuffer.toString(
