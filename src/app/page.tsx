@@ -37,16 +37,16 @@ export default function PixelPerfect() {
         body: formData,
       });
 
+      const result = await response.json();
       if (!response.ok) {
-        throw new Error("Optimization failed");
+        throw new Error(result.error || "Failed to optimize image");
       }
 
-      const result = await response.json();
       setOptimizedImage(result.optimizedImageUrl);
       toast.success("Image optimized", { id: toastId });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error:", error);
-      toast.error("Failed to optimize image", { id: toastId });
+      toast.error(error.message, { id: toastId });
     } finally {
       setIsProcessing(false);
     }
