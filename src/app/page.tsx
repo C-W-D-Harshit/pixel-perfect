@@ -40,7 +40,7 @@ export default function PixelPerfect() {
 
       const result = await response.json();
       if (!response.ok) {
-        throw new Error(result.error || "Failed to optimize image");
+        throw new Error("Failed to optimize image");
       }
 
       setOptimizedImage(result.optimizedImageUrl);
