@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
@@ -44,9 +45,9 @@ export default function PixelPerfect() {
 
       setOptimizedImage(result.optimizedImageUrl);
       toast.success("Image optimized", { id: toastId });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error:", error);
-      toast.error(error.message, { id: toastId });
+      toast.error((error as any).message, { id: toastId });
     } finally {
       setIsProcessing(false);
     }
